@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Prime</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="continues">Continue</string>
+    <string name="skip_pressed">Skip Pressed!!</string>
+    <string name="description">How great is it to travel?
+      To meet new people, see new places, experience different cultures.</string>
+    <string name="start">Start</string>
+</resources>
