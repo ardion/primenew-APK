@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/containerporto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="#A7A8AE">
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Aplication"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_nameApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Aplication"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_1"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Link Repository"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_nameApp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/tv_linkrepo"
+            android:text="Link repository"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/tv_2"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type Repository"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_linkrepo"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/tv_typerepo"
+            android:text="Type Repository"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tv_3"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type Portofolio"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_typerepo"
+            app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/tv_typeporto"
+            android:text="Type of portofolio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tv_4"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <ImageView
+            android:id="@+id/tv_imageporto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Image porto"
+            android:src="@drawable/prime"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

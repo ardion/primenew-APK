@@ -7,4 +7,16 @@
     <string name="description">How great is it to travel?
       To meet new people, see new places, experience different cultures.</string>
     <string name="start">Start</string>
+
+    <string-array name="role_accounts">
+        <item>recruiter</item>
+        <item>job seeker</item>
+    </string-array>
+
+    <string-array name="search">
+        <item>name</item>
+        <item>skill</item>
+        <item>jobdesk</item>
+        <item>domicile</item>
+    </string-array>
 </resources>

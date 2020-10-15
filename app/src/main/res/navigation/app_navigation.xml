@@ -6,12 +6,12 @@
     app:startDestination="@id/profileFragmen2">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.jjl.HomeFragment"
+        android:name="com.example.jjl.home.HomeFragment"
         android:label="Home" />
 
     <fragment
         android:id="@+id/profileFragmen2"
-        android:name="com.example.jjl.ProfileFragmen"
+        android:name="com.example.jjl.profilecompany.ProfileFragmen"
         android:label="Profile" />
     <fragment
         android:id="@+id/offersFragment"
@@ -19,7 +19,7 @@
         android:label="Offers" />
     <fragment
         android:id="@+id/projectfragmen"
-        android:name="com.example.jjl.ProjectFragment"
+        android:name="com.example.jjl.project.ProjectFragment"
         android:label="Project" />
 
 

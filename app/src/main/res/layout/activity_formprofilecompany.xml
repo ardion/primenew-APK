@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:background="@drawable/background"
+            android:gravity="center"
+            tools:context=".project.AddProjectActivity">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company Name"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/white"/>
+            <EditText
+                android:id="@+id/et_companyname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:background="#CCFFFFFF" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Scope"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/et_scope"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="City"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/et_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="#CCFFFFFF" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company Description"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/white"/>
+
+
+
+            <EditText
+                android:id="@+id/et_companydescription"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="#CCFFFFFF"
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instagram"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/et_instagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="#CCFFFFFF"
+                android:inputType="text"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Position"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/et_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="#CCFFFFFF"
+                android:inputType="text"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LinkedID"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/et_linkedID"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF" />
+
+            <Button
+                android:id="@+id/btn_pick_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="Pick a Image" />
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:scaleType="fitCenter"
+                android:src="@drawable/prime"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="24dp"/>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:text="Submit" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
