@@ -174,11 +174,13 @@
                     android:id="@+id/btn_portofolio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button"
                     android:text="Portofolio"
                     android:layout_marginBottom="20dp" />
 
                 <Button
                     android:id="@+id/btn_experience"
+                    android:background="@drawable/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Experience"
@@ -189,6 +191,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hiring"
+                    android:background="@drawable/button"
                     android:layout_marginBottom="50dp" />
 
 
