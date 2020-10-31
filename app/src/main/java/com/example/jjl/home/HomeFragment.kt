@@ -127,7 +127,7 @@ class HomeFragment : Fragment() {
                         it.skill.orEmpty()
                     )
                 } ?: listOf()
-
+                Log.d("android2", list.toString())
                 (binding.recyclerView.adapter as homeaAdabter).addList(list)
             } else if (response is Throwable) {
                 Log.e("android1", response.message ?: "Error")

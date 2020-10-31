@@ -14,10 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".hiring.hiringActivity"></activity>
+        <activity android:name=".project.AddProjectActivity"></activity>
+        <activity android:name=".hiring.hiringActivity" />
         <activity android:name=".experience.experienceActivity" />
         <activity android:name=".portofolio.portofolioActivity" />
         <activity android:name=".company.formprofilecompanyActivity" />
+<!--        <activity android:name=".project.AddProjectActivity" />-->
         <activity android:name=".detailworker.detailworkerActivity" />
         <activity android:name=".GithubActivity" />
         <activity

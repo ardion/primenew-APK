@@ -1,11 +1,16 @@
 package com.example.jjl.project
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jjl.Constant
@@ -20,6 +25,7 @@ class ProjectFragment : Fragment() {
 
     lateinit var binding: FragmentProjectBinding
     lateinit var sharedPref: PreferenceHelper
+    private lateinit var coroutineScope: CoroutineScope
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,23 +34,24 @@ class ProjectFragment : Fragment() {
         binding= FragmentProjectBinding.inflate(inflater)
         sharedPref= context?.let { PreferenceHelper(it) }!!
         binding.recyclerView.adapter = projectAdabter()
-
-
-        binding.recyclerView.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.btnAddProject.setOnClickListener {
+            val intent = Intent(activity, AddProjectActivity::class.java)
+            startActivityForResult(intent, AddProjectActivity.ADD_WORD_REQUEST_CODE)
+        }
         useCoroutineToCallAPI()
-
         return binding.root
     }
 
 
 
     private fun useCoroutineToCallAPI() {
-//        binding.progressBar.visibility = View.VISIBLE
+
+
         val service =
             context?.let { ApiClient.getApiClient(it)?.create(projectapiservice::class.java) }
 
-        val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+        coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
         coroutineScope.launch {
 
@@ -61,7 +68,8 @@ class ProjectFragment : Fragment() {
             }
 
             if (response is projectresponse) {
-                Log.d("android1", response.data.toString())
+                Toast.makeText(context,"usecorotine",Toast.LENGTH_SHORT).show()
+//                Log.d("android1", response.data.toString())
                 val list = response.data?.map {
                     projectModel(
                         it.id_project.orEmpty(),
@@ -70,7 +78,8 @@ class ProjectFragment : Fragment() {
                         it.description_project.orEmpty()
                     )
                 } ?: listOf()
-                Log.e("android1", list.toString())
+                Log.d("hhhh", list.toString())
+
                 (binding.recyclerView.adapter as projectAdabter).addList(list)
             } else if (response is Throwable) {
                 Log.e("android1", response.message ?: "Error")
@@ -81,6 +90,19 @@ class ProjectFragment : Fragment() {
 
 
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == AddProjectActivity.ADD_WORD_REQUEST_CODE ) {
+            binding.recyclerView.adapter = projectAdabter()
+            binding.recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            useCoroutineToCallAPI()
+            Log.d("coba",AddProjectActivity.ADD_WORD_REQUEST_CODE.toString())
+        }
+
+    }
+
+
 
 //    private fun setUpRecyclerView() {
 //        Recycleproject = projectAdabter(arrayListOf(), object : projectAdabter.OnClickViewListener {
@@ -98,3 +120,46 @@ class ProjectFragment : Fragment() {
 }
 
 
+//class WordListActivity : AppCompatActivity() {
+//
+//    private lateinit var binding: ActivityWordListBinding
+//    private lateinit var coroutineScope: CoroutineScope
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_word_list)
+//        coroutineScope = CoroutineScope(Job() + Dispatchers.IO)
+//
+//        binding.rvWords.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+//        binding.rvWords.adapter = WordListAdapter()
+//
+//        binding.btnAddWord.setOnClickListener {
+//            val intent = Intent(this, AddWordActivity::class.java)
+//            startActivityForResult(intent, AddWordActivity.ADD_WORD_REQUEST_CODE)
+//        }
+//
+//        populateList()
+//    }
+//
+//    private fun populateList() {
+//        coroutineScope.launch {
+//            val wordDao = WordRoomDatabase.getWordDatabase(this@WordListActivity).wordDao()
+//            val list = wordDao.getAllWord()
+//            withContext(Dispatchers.Main) {
+//                (binding.rvWords.adapter as WordListAdapter).addItems(list)
+//            }
+//        }
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode == Activity.RESULT_OK && requestCode == AddWordActivity.ADD_WORD_REQUEST_CODE ) {
+//            populateList()
+//        }
+//    }
+//
+//    override fun onDestroy() {
+//        coroutineScope.cancel()
+//        super.onDestroy()
+//    }
+//}

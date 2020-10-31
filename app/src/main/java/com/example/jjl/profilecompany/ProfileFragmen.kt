@@ -57,13 +57,14 @@ class ProfileFragmen : Fragment() {
                 Log.d("android1", "callApi : ${Thread.currentThread().name}")
                 try {
                     service?.getCompanybyID(sharedPref.getString(Constant.PREF_ID))
+//                    sharedPref.getString(Constant.PREF_ID)
                 } catch (e: Throwable) {
                     e.printStackTrace()
                 }
             }
 
             if (response is companyResponse) {
-                Log.d("idcom", response.data.id_company.toString())
+//                Log.d("idcom", response.data.id_company.toString())
 
                 sharedPref.put(Constant.PREF_IDCOMPANY, response.data?.id_company.toString())
                 sharedPref.getString(Constant.PREF_IDCOMPANY)?.let { Log.d("idcom2", it) }
