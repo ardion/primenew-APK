@@ -15,6 +15,7 @@ import com.example.jjl.company.formprofilecompanyActivity
 import com.example.jjl.databinding.ActivityLogin2Binding
 import com.example.jjl.home.HomeFragment
 import com.example.jjl.regis.registerLayout
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
 class login : BaseActivity() {

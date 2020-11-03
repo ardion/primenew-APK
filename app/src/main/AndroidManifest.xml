@@ -8,19 +8,25 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/prime"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/prime"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".project.AddProjectActivity"></activity>
-        <activity android:name=".hiring.hiringActivity" />
-        <activity android:name=".experience.experienceActivity" />
-        <activity android:name=".portofolio.portofolioActivity" />
-        <activity android:name=".company.formprofilecompanyActivity" />
+        <activity android:name=".project.AddProjectActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".hiring.hiringActivity"
+            android:theme="@style/AppTheme.NoActionBar"  />
+        <activity android:name=".experience.experienceActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".portofolio.portofolioActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".company.formprofilecompanyActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 <!--        <activity android:name=".project.AddProjectActivity" />-->
-        <activity android:name=".detailworker.detailworkerActivity" />
+        <activity android:name=".detailworker.detailworkerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".GithubActivity" />
         <activity
             android:name=".regis.registerLayout"

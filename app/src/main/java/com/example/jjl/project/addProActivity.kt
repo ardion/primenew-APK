@@ -15,6 +15,8 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.jjl.Constant
+import com.example.jjl.PreferenceHelper
 import com.example.jjl.R
 import com.example.jjl.databinding.ActivityAddProjectBinding
 import com.example.jjl.home.HomeFragment
@@ -29,6 +31,7 @@ class AddProjectActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddProjectBinding
     private lateinit var viewModel: AddProjectViewModel
+    lateinit var sharedPref: PreferenceHelper
 
     companion object {
         //image pick code
@@ -44,6 +47,7 @@ class AddProjectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_project)
+        sharedPref= PreferenceHelper(this)
         viewModel = ViewModelProvider(this).get(AddProjectViewModel::class.java)
         val service = ApiClient.getApiClient(this)?.create(projectapiservice::class.java)
         if (service != null) {
@@ -113,10 +117,10 @@ class AddProjectActivity : AppCompatActivity() {
             val mediaTypeImg = "image/jpeg".toMediaType()
             val inputStream = contentResolver.openInputStream(data?.data!!)
             val reqFile: RequestBody? = inputStream?.readBytes()?.toRequestBody(mediaTypeImg)
-
-            val id_company = createPartFromString("29")
-            val name_project = createPartFromString("Web sigma")
-            val description_project = createPartFromString("Pembuatan Web sigma consulting")
+var id=sharedPref.getString(Constant.PREF_IDCOMPANY)
+            val id_company = createPartFromString("$id")
+            val name_project = createPartFromString(binding.etProjectName.text.toString())
+            val description_project = createPartFromString(binding.etProjectDescription.text.toString())
 
             img = reqFile?.let { it1 ->
                 MultipartBody.Part.createFormData("image", file.name,

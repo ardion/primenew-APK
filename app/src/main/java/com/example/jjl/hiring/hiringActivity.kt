@@ -58,6 +58,7 @@ val bb=sharedPref.getString(Constant.PREF_IDWORKER)
             Log.d("hiringcoba1",bb)
         }
         binding.btnHiring.setOnClickListener {
+            Log.d("hiringcoba1",selectedSpiner.toString())
             sharedPref.getString(Constant.PREF_IDWORKER)?.toInt()?.let { it1 ->
                 viewModel.callhiringapi(selectedSpiner,
                     it1,binding.tvMessage.text.toString(),binding.tvPrice.text.toString().toInt(),binding.tvProjectjob.text.toString())
