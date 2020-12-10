@@ -10,8 +10,6 @@ interface portofolioApiService {
 
     @GET("portofolio/{id}")
     suspend fun getAllPorto(@Path("id") id: String?) : portoresponse
-
-
 }
 
 

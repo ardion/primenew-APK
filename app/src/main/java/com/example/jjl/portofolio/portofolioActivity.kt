@@ -20,13 +20,12 @@ class portofolioActivity : AppCompatActivity() {
     private lateinit var RecycleWorker: portoAdabter
     lateinit var sharedPref: PreferenceHelper
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPref= PreferenceHelper(this)
+        sharedPref = PreferenceHelper(this)
 
-        binding = DataBindingUtil.setContentView(this,
+        binding = DataBindingUtil.setContentView(
+            this,
             R.layout.activity_portofolio
         )
         binding.recyclerView.adapter = portoAdabter()
@@ -36,7 +35,6 @@ class portofolioActivity : AppCompatActivity() {
     }
 
     private fun useCoroutineToCallAPI() {
-//        binding.progressBar.visibility = View.VISIBLE
         val service = ApiClient.getApiClient(this)?.create(portofolioApiService::class.java)
         val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
@@ -48,7 +46,7 @@ class portofolioActivity : AppCompatActivity() {
             val response = withContext(Dispatchers.IO) {
                 Log.d("android1", "callApi : ${Thread.currentThread().name}")
                 try {
-                    val a=sharedPref.getString(Constant.PREF_IDWORKER)
+                    val a = sharedPref.getString(Constant.PREF_IDWORKER)
                     service?.getAllPorto(a)
                 } catch (e: Throwable) {
                     e.printStackTrace()
@@ -75,8 +73,5 @@ class portofolioActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
             Log.d("android1", "finish : ${Thread.currentThread().name}")
         }
-
-
     }
-
 }

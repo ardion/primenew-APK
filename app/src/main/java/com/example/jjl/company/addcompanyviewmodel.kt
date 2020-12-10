@@ -16,15 +16,8 @@ import kotlin.coroutines.CoroutineContext
 class AddCompanyViewModel : ViewModel(), CoroutineScope {
 
     private lateinit var service: companyapiservice
-
-    //    lateinit var sharedPref: PreferenceHelper
-//    sharedPref= PreferenceHelper(this)
-//    val dataIDcompany = MutableLiveData<String>()
-
-
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Main
-
 
     fun setLoginService(service: companyapiservice) {
         this.service = service
@@ -43,11 +36,8 @@ class AddCompanyViewModel : ViewModel(), CoroutineScope {
     ) {
 
         launch {
-
             val response = withContext(Dispatchers.IO) {
                 try {
-
-
                     service?.postcompany(
                         id_user, company_name, scope,
                         city, company_description, instagram, position,
@@ -59,14 +49,10 @@ class AddCompanyViewModel : ViewModel(), CoroutineScope {
             }
 
             if (response is companyAddResponse) {
-//                var list = response.data.id
-                Log.d("responid",response.data.id.toString())
-//                dataIDcompany.value = list
+                Log.d("responid", response.data.id.toString())
             }
 
         }
-
-
     }
 }
 

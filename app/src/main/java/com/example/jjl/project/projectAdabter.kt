@@ -23,29 +23,27 @@ class projectAdabter() : RecyclerView.Adapter<projectAdabter.projectHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):projectHolder {
-        return projectHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_project, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): projectHolder {
+        return projectHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_project,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: projectHolder, position: Int) {
-
-
         val item = items[position]
-
         holder.binding.tvNameproject.text = item.name_project
         holder.binding.tvDescriptionproject.text = item.description_project
 
-//        holder.binding.containerproject.setOnClickListener {
-//            listener.OnClick(item.id_project)
-//        }
     }
 
-    class projectHolder( val binding:ItemProjectBinding ) : RecyclerView.ViewHolder(binding.root)
+    class projectHolder(val binding: ItemProjectBinding) : RecyclerView.ViewHolder(binding.root)
 
-//    interface OnClickViewListener{
-//        fun OnClick(id:String)
-//    }
 }
 

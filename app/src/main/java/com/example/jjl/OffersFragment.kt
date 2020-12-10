@@ -21,6 +21,4 @@ class OffersFragment : Fragment() {
         binding= FragmentOffersBinding.inflate(inflater)
         return binding.root
     }
-
-
 }

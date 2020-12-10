@@ -1,6 +1,6 @@
 package com.example.jjl.detailworker
 
-import com.google.gson.annotations.SerializedName
+
 
 
 data class workerdetailModel(

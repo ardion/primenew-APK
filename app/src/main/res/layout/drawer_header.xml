@@ -15,9 +15,7 @@
         android:textColor="#D7CD8A25"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="@id/wrap_email"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/wrap_email"

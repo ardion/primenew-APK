@@ -13,10 +13,3 @@ data class hiringResponse(val success: Boolean, val message: String?, val data: 
 
     )
 }
-
-//
-//id_project:5
-//id_worker:30
-//message:aaaa
-//price:2334
-//project_job:aaaaaa

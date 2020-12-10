@@ -30,7 +30,7 @@ class login : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login2)
         sharedPref = PreferenceHelper(this)
         initlisteners()
-        
+
     }
 
 
@@ -52,12 +52,11 @@ class login : BaseActivity() {
         }
     }
 
-    private fun moveIntent(){
+    private fun moveIntent() {
 
-        startActivity(Intent(this,formprofilecompanyActivity::class.java))
+        startActivity(Intent(this, formprofilecompanyActivity::class.java))
         finish()
     }
-
 
 
     private fun callSignInApi() {
@@ -79,13 +78,17 @@ class login : BaseActivity() {
                 } catch (e: Throwable) {
                     Log.e("onError", "onError : " + e.message);
                     e.printStackTrace()
-                    withContext(Dispatchers.Main){
-                        Toast.makeText(applicationContext,"invalid username/password", Toast.LENGTH_SHORT).show()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            applicationContext,
+                            "invalid username/password",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         binding.progressBar.visibility = View.GONE
                     }
                 }
             }
-        Log.d("test",response.toString())
+            Log.d("test", response.toString())
             if (response is LoginResponse) {
                 binding.progressBar.visibility = View.GONE
 

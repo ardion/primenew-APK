@@ -28,80 +28,46 @@ class ProfileFragmen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding= FragmenProfileBinding.inflate(inflater)
-        sharedPref= context?.let { PreferenceHelper(it) }!!
-
-
-
+        binding = FragmenProfileBinding.inflate(inflater)
+        sharedPref = context?.let { PreferenceHelper(it) }!!
         useCoroutineToCallAPI()
-//        binding.github.setOnClickListener{
-//            val intent=Intent(activity,GithubActivity::class.java)
-//            startActivity(intent)
-//        }
         return binding.root
 
     }
 
     private fun useCoroutineToCallAPI() {
-
-
-        val service= context?.let { ApiClient.getApiClient(it)?.create(companyapiservice::class.java) }
+        val service =
+            context?.let { ApiClient.getApiClient(it)?.create(companyapiservice::class.java) }
 
         val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
         coroutineScope.launch {
-//            binding.progressBar.visibility = View.VISIBLE
             Log.d("android1", "start : ${Thread.currentThread().name}")
 
             val response = withContext(Dispatchers.IO) {
                 Log.d("android1", "callApi : ${Thread.currentThread().name}")
                 try {
                     service?.getCompanybyID(sharedPref.getString(Constant.PREF_ID))
-//                    sharedPref.getString(Constant.PREF_ID)
                 } catch (e: Throwable) {
                     e.printStackTrace()
                 }
             }
 
             if (response is companyResponse) {
-//                Log.d("idcom", response.data.id_company.toString())
-
                 sharedPref.put(Constant.PREF_IDCOMPANY, response.data?.id_company.toString())
                 sharedPref.getString(Constant.PREF_IDCOMPANY)?.let { Log.d("idcom2", it) }
-
-
-                binding.etCompanyname.text=response.data?.company_name
-                binding.etScope.text=response.data?.scope
-                binding.etCity.text=response.data?.city
-                binding.etCompanydescription.text=response.data?.company_description
-                binding.etInstagram.text=response.data?.instagram
-                binding.etPosition.text=response.data?.position
-                binding.etLinkedID.text=response.data?.linkedID
-                Picasso.get().load("http://35.172.182.122:8080/uploads/"+response.data?.image).into(binding.imageView)
-//                binding.imageView.text=response.data?.image
-//                val list = response.data?.map {
-//                    workerdetailModel(
-//                        it.id_worker.orEmpty(),
-//                        it.name.orEmpty(),
-//                        it.image.orEmpty(),
-//                        it.domicile.orEmpty(),
-//                        it.skill.orEmpty()
-//                    )
-//                } ?: listOf()
-
-
-
+                binding.etCompanyname.text = response.data?.company_name
+                binding.etScope.text = response.data?.scope
+                binding.etCity.text = response.data?.city
+                binding.etCompanydescription.text = response.data?.company_description
+                binding.etInstagram.text = response.data?.instagram
+                binding.etPosition.text = response.data?.position
+                binding.etLinkedID.text = response.data?.linkedID
+                Picasso.get().load("http://35.172.182.122:8080/uploads/" + response.data?.image)
+                    .into(binding.imageView)
             } else if (response is Throwable) {
                 Log.e("android1", response.message ?: "Error")
             }
         }
-
-
     }
-
-
-
-
-
-
 }

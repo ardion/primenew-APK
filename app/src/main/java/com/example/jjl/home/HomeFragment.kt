@@ -58,18 +58,12 @@ class HomeFragment : Fragment() {
         sharedPref= context?.let { PreferenceHelper(it) }!!
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-//        useCoroutineToCallAPI("")
-
-
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             private var searchFor = ""
 
             override fun afterTextChanged(s: Editable?) = Unit
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
-                Unit
-
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
                 val searchText = s.toString().trim()
                 if (searchText == searchFor)
                     return
@@ -87,16 +81,13 @@ class HomeFragment : Fragment() {
         })
 
         useCoroutineToCallAPI("")
-
         setUpRecyclerView()
-
         return binding.root
 
     }
 
 
     private fun useCoroutineToCallAPI(search:String) {
-//        binding.progressBar.visibility = View.VISIBLE
         val service =
             context?.let { ApiClient.getApiClient(it)?.create(homeapiservice::class.java) }
 
@@ -135,8 +126,6 @@ class HomeFragment : Fragment() {
             binding.progressBar.visibility = View.GONE
             Log.d("android1", "finish : ${Thread.currentThread().name}")
         }
-
-
     }
 
     private fun setUpRecyclerView() {
@@ -152,9 +141,5 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = RecycleWorker
         binding.recyclerView.layoutManager =
             LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-
-
     }
-
-
 }

@@ -27,14 +27,14 @@ class hiringActivity : AppCompatActivity() {
     lateinit var binding: ActivityHiringBinding
     lateinit var viewModel: hiringViewModel
     lateinit var sharedPref: PreferenceHelper
-    var selectedSpiner:Int=0
+    var selectedSpiner: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedPref= PreferenceHelper(this)
+        sharedPref = PreferenceHelper(this)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hiring)
-        viewModel=ViewModelProvider(this).get(hiringViewModel::class.java)
-        val servicepost=ApiClient.getApiClient(this)?.create(hiringApiService::class.java)
+        viewModel = ViewModelProvider(this).get(hiringViewModel::class.java)
+        val servicepost = ApiClient.getApiClient(this)?.create(hiringApiService::class.java)
         val servicelist = ApiClient.getApiClient(this)?.create(projectapiservice::class.java)
 
         if (servicepost != null) {
@@ -45,50 +45,54 @@ class hiringActivity : AppCompatActivity() {
             viewModel.setproject(service = servicelist)
         }
 
-    subscribeLiveData()
-        val aa=sharedPref.getString(Constant.PREF_IDCOMPANY)
+        subscribeLiveData()
+        val aa = sharedPref.getString(Constant.PREF_IDCOMPANY)
         if (aa != null) {
-            Log.d("hiringcoba",aa)
+            Log.d("hiringcoba", aa)
         }
         if (aa != null) {
             viewModel.listprojectapi(aa)
         }
-val bb=sharedPref.getString(Constant.PREF_IDWORKER)
+        val bb = sharedPref.getString(Constant.PREF_IDWORKER)
         if (bb != null) {
-            Log.d("hiringcoba1",bb)
+            Log.d("hiringcoba1", bb)
         }
         binding.btnHiring.setOnClickListener {
-            Log.d("hiringcoba1",selectedSpiner.toString())
+            Log.d("hiringcoba1", selectedSpiner.toString())
             sharedPref.getString(Constant.PREF_IDWORKER)?.toInt()?.let { it1 ->
-                viewModel.callhiringapi(selectedSpiner,
-                    it1,binding.tvMessage.text.toString(),binding.tvPrice.text.toString().toInt(),binding.tvProjectjob.text.toString())
+                viewModel.callhiringapi(
+                    selectedSpiner,
+                    it1,
+                    binding.tvMessage.text.toString(),
+                    binding.tvPrice.text.toString().toInt(),
+                    binding.tvProjectjob.text.toString()
+                )
             }
             Toast.makeText(
-                            applicationContext,
-                            "success in",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                applicationContext,
+                "success in",
+                Toast.LENGTH_SHORT
+            ).show()
         }
-
     }
 
 
-    private fun subscribeLiveData(){
+    private fun subscribeLiveData() {
         viewModel.progressBarlivedata.observe(this, Observer {
-            if (it){
-                binding.progressBar.visibility= View.VISIBLE
-            }else{
-                binding.progressBar.visibility= View.GONE
+            if (it) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
             }
         })
         viewModel.spinerlivedata.observe(this, Observer {
-            var spiner=binding.spinerhiring
-            spiner.adapter=ArrayAdapter<String>(
-                this,R.layout.support_simple_spinner_dropdown_item,it.map{
+            var spiner = binding.spinerhiring
+            spiner.adapter = ArrayAdapter<String>(
+                this, R.layout.support_simple_spinner_dropdown_item, it.map {
                     it.name_project
                 }
             )
-            spiner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener {
+            spiner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
@@ -102,14 +106,6 @@ val bb=sharedPref.getString(Constant.PREF_IDWORKER)
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
             }
-
-
         })
     }
-
-
-
-
-
-
 }

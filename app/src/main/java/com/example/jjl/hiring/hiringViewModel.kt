@@ -38,7 +38,7 @@ class hiringViewModel : ViewModel(), CoroutineScope {
     ) {
         launch {
             progressBarlivedata.value = true
-             withContext(Dispatchers.IO) {
+            withContext(Dispatchers.IO) {
                 Log.d("test", "call API = ${Thread.currentThread().name}")
 
                 try {
@@ -53,12 +53,6 @@ class hiringViewModel : ViewModel(), CoroutineScope {
                     Log.e("onError", "onError : " + e.message);
                     e.printStackTrace()
                     withContext(Dispatchers.Main) {
-//                        Toast.makeText(
-//                            applicationContext,
-//                            "invalid username/password",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-
                     }
                 }
 
@@ -71,40 +65,28 @@ class hiringViewModel : ViewModel(), CoroutineScope {
         launch {
             progressBarlivedata.value = true
             val response = withContext(Dispatchers.IO) {
-//                Log.d("test", "call API = ${Thread.currentThread().name}")
-
                 try {
                     serviceget?.getAllProject(id)
                 } catch (e: Throwable) {
                     Log.e("onError", "onError : " + e.message);
                     e.printStackTrace()
                     withContext(Dispatchers.Main) {
-//                        Toast.makeText(
-//                            applicationContext,
-//                            "invalid username/password",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
                         progressBarlivedata.value = false
                     }
 
                 }
 
             }
-            Log.d("response",(response is projectresponse).toString())
-            if (response is projectresponse){
-                var list=response.data?.map{
-                    spinerhiringmodel(it.id_project.orEmpty(),it.name_project.orEmpty())
-
+            Log.d("response", (response is projectresponse).toString())
+            if (response is projectresponse) {
+                var list = response.data?.map {
+                    spinerhiringmodel(it.id_project.orEmpty(), it.name_project.orEmpty())
                 }
                 progressBarlivedata.value = false
-
-                spinerlivedata.value=list
+                spinerlivedata.value = list
             }
-
         }
-
     }
-
 }
 
 

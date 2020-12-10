@@ -18,19 +18,23 @@ class AddProjectViewModel : ViewModel(), CoroutineScope {
         this.service = service
     }
 
-    fun postProjectApi(id_company: RequestBody, name_project: RequestBody, description_project: RequestBody, image: MultipartBody.Part) {
+    fun postProjectApi(
+        id_company: RequestBody,
+        name_project: RequestBody,
+        description_project: RequestBody,
+        image: MultipartBody.Part
+    ) {
         launch {
 
             val response = withContext(Dispatchers.IO) {
                 try {
-                    service?.postProject(id_company,name_project, description_project , image)
+                    service?.postProject(id_company, name_project, description_project, image)
                 } catch (e: Throwable) {
                     e.printStackTrace()
                 }
             }
 
             if (response is ProjectAddResponse) {
-                // Action Success
             }
         }
     }

@@ -2,7 +2,7 @@ package com.example.jjl.portofolio
 
 import com.google.gson.annotations.SerializedName
 
-data class portoresponse (val success: Boolean, val message: String?, val data: List<porto>) {
+data class portoresponse(val success: Boolean, val message: String?, val data: List<porto>) {
 
     data class porto(
         @SerializedName("id_worker") val id_worker: String?,

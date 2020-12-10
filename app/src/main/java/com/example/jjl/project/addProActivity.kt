@@ -34,20 +34,16 @@ class AddProjectActivity : AppCompatActivity() {
     lateinit var sharedPref: PreferenceHelper
 
     companion object {
-        //image pick code
         private const val IMAGE_PICK_CODE = 1000;
-        //Permission code
         private const val PERMISSION_CODE = 1001;
-
         const val ADD_WORD_REQUEST_CODE = 9013;
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_project)
-        sharedPref= PreferenceHelper(this)
+        sharedPref = PreferenceHelper(this)
         viewModel = ViewModelProvider(this).get(AddProjectViewModel::class.java)
         val service = ApiClient.getApiClient(this)?.create(projectapiservice::class.java)
         if (service != null) {
@@ -55,88 +51,78 @@ class AddProjectActivity : AppCompatActivity() {
         }
 
         binding.btnPickImage.setOnClickListener {
-            //check runtime permission
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED){
-                    //permission denied
+                    PackageManager.PERMISSION_DENIED
+                ) {
                     val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    //show popup to request runtime permission
                     requestPermissions(permissions, PERMISSION_CODE);
-                }
-                else{
-                    //permission already granted
+                } else {
                     pickImageFromGallery();
                 }
-            }
-            else{
-                //system OS is < Marshmallow
+            } else {
                 pickImageFromGallery();
             }
         }
 
 
-
     }
 
     private fun pickImageFromGallery() {
-        //Intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
-    //handle requested permission result
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode){
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED){
-                    //permission from popup granted
+                    PackageManager.PERMISSION_GRANTED
+                ) {
                     pickImageFromGallery()
-                }
-                else{
-                    //permission from popup denied
+                } else {
                     Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    //handle result of picked image
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             binding.imageView.setImageURI(data?.data)
-
             val filePath = getPath(this, data?.data)
             val file = File(filePath)
-
             var img: MultipartBody.Part? = null
             val mediaTypeImg = "image/jpeg".toMediaType()
             val inputStream = contentResolver.openInputStream(data?.data!!)
             val reqFile: RequestBody? = inputStream?.readBytes()?.toRequestBody(mediaTypeImg)
-var id=sharedPref.getString(Constant.PREF_IDCOMPANY)
+            var id = sharedPref.getString(Constant.PREF_IDCOMPANY)
             val id_company = createPartFromString("$id")
             val name_project = createPartFromString(binding.etProjectName.text.toString())
-            val description_project = createPartFromString(binding.etProjectDescription.text.toString())
-
+            val description_project =
+                createPartFromString(binding.etProjectDescription.text.toString())
             img = reqFile?.let { it1 ->
-                MultipartBody.Part.createFormData("image", file.name,
+                MultipartBody.Part.createFormData(
+                    "image", file.name,
                     it1
                 )
             }
 
             binding.btnSubmit.setOnClickListener {
                 if (img != null) {
-                    viewModel.postProjectApi(id_company,name_project,description_project, img)
+                    viewModel.postProjectApi(id_company, name_project, description_project, img)
                 }
                 setResult(Activity.RESULT_OK)
                 finish()
             }
         }
-
     }
 
     fun getPath(context: Context, uri: Uri?): String {
@@ -163,5 +149,4 @@ var id=sharedPref.getString(Constant.PREF_IDCOMPANY)
         return json
             .toRequestBody(mediaType)
     }
-
 }

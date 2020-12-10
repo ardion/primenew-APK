@@ -23,6 +23,4 @@ class splashActivity : BaseActivity() {
         }, 3000)
 
     }
-
-
 }

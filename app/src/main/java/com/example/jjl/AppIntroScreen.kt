@@ -50,7 +50,11 @@ class AppIntroScreen : BaseActivity(), View.OnClickListener {
 
             }
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
                 currentTab = position + 1
                 if (currentTab == tabCount) {
                     skip.text = getString(R.string.start)
@@ -81,15 +85,15 @@ class AppIntroScreen : BaseActivity(), View.OnClickListener {
             R.id.skip -> {
                 val intentlogin = Intent(this, login::class.java)
                 startActivity(intentlogin)
-                // Proceed to Main/Home Activity of the App
             }
         }
     }
 }
 
-class SlidingPagerAdapter(fragmentManager: FragmentManager?, val mResources: IntArray) : FragmentPagerAdapter(
-    fragmentManager!!
-) {
+class SlidingPagerAdapter(fragmentManager: FragmentManager?, val mResources: IntArray) :
+    FragmentPagerAdapter(
+        fragmentManager!!
+    ) {
 
     override fun getItem(position: Int): Fragment {
         return IntroPage().newInstance(position)

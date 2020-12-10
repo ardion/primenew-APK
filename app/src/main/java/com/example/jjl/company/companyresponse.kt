@@ -19,13 +19,3 @@ data class companyAddResponse(val success: Boolean, val message: String?, val da
         val image: String?
     )
 }
-//
-//@Part("id_user") id_user: RequestBody,
-//@Part("company_name") company_name: RequestBody,
-//@Part("scope") scope: RequestBody,
-//@Part("city") city: RequestBody,
-//@Part("company_description") company_description: RequestBody,
-//@Part("instagram") instagram: RequestBody,
-//@Part("position") position: RequestBody,
-//@Part("linkedID") linkedID: RequestBody,
-//@Part image: MultipartBody.Part

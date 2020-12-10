@@ -1,234 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarslide"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="#090909"
-        android:theme="@style/toolbar"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
-        <LinearLayout
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarslide"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="#090909"
+            android:theme="@style/toolbar"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Prime"
-                android:textSize="30dp"
-                android:textColor="#9A6E2E"
-                android:fontFamily="cursive"
-                android:gravity="center"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:fontFamily="cursive"
+                    android:gravity="center"
+                    android:text="Prime"
+                    android:textColor="#9A6E2E"
+                    android:textSize="30dp" />
 
 
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/grad"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/image_view"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="9dp"
-                    android:background="@drawable/circle"
-                    android:padding="3dp"
-                    android:src="@drawable/prime" />
-
-                <TextView
-                    android:id="@+id/tv_namedetail"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/image_view"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Ardion Massaid"
-                    android:textColor="@color/white"
-                    android:textSize="32dp" />
+                    android:background="@drawable/grad"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/et_city"
-                    android:layout_width="wrap_content"
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/image_view"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="9dp"
+                        android:background="@drawable/circle"
+                        android:padding="3dp"
+                        android:src="@drawable/prime" />
+
+                    <TextView
+                        android:id="@+id/tv_namedetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/image_view"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Ardion Massaid"
+                        android:textColor="@color/white"
+                        android:textSize="32dp" />
+
+                    <TextView
+                        android:id="@+id/et_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/et_companyname"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="Jakarta"
+                        android:textAllCaps="true"
+                        android:textColor="@color/address"
+                        android:textSize="20dp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/et_companyname"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Jakarta"
-                    android:textAllCaps="true"
-                    android:textColor="@color/address"
-                    android:textSize="20dp" />
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D5E5F3"
+                        android:text="Job Desk"
+                        android:textColor="@color/headings"
+                        android:textSize="13dp" />
 
+                    <TextView
+                        android:id="@+id/tv_jobdesk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Job Desk"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D5E5F3"
+                        android:text="Job Status"
+                        android:textColor="@color/headings"
+                        android:textSize="13dp" />
 
+                    <TextView
+                        android:id="@+id/tv_jobstatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Job Status"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D5E5F3"
+                        android:text="Deskription Personal"
+                        android:textColor="@color/headings"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_deskper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Desc"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D5E5F3"
+                        android:text="Instagram"
+                        android:textColor="@color/headings"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_instagram"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="insta"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D5E5F3"
+                        android:text="Skill"
+                        android:textColor="@color/headings"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_skill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="post"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D5E5F3"
+                        android:text="Github"
+                        android:textColor="@color/headings"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_github"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Github"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D5E5F3"
+                        android:text="gitlab"
+                        android:textColor="@color/headings"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_gitlab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:text="gitlab"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+                    <Button
+                        android:id="@+id/btn_portofolio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/button"
+                        android:text="Portofolio" />
+
+                    <Button
+                        android:id="@+id/btn_experience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/button"
+                        android:text="Experience" />
+
+                    <Button
+                        android:id="@+id/btn_hiring"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="50dp"
+                        android:background="@drawable/button"
+                        android:text="Hiring" />
+
+                </LinearLayout>
             </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Job Desk"
-                    android:textColor="@color/headings"
-                    android:textSize="13dp"
-                    android:background="#D5E5F3"/>
-                <TextView
-                    android:id="@+id/tv_jobdesk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Job Desk"
-                    android:textSize="18dp"
-                    android:textColor="#000000"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Job Status"
-                    android:textColor="@color/headings"
-                    android:textSize="13dp"
-                    android:background="#D5E5F3"/>
-                <TextView
-                    android:id="@+id/tv_jobstatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Job Status"
-                    android:textSize="18dp"
-                    android:textColor="#000000"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Deskription Personal"
-                    android:textColor="@color/headings"
-                    android:textSize="13dp"
-                    android:background="#D5E5F3"/>
-                <TextView
-                    android:id="@+id/tv_deskper"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Desc"
-                    android:textSize="18dp"
-                    android:textColor="#000000"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Instagram"
-                    android:textColor="@color/headings"
-                    android:textSize="13dp"
-                    android:background="#D5E5F3"/>
-                <TextView
-                    android:id="@+id/tv_instagram"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="insta"
-                    android:textSize="18dp"
-                    android:textColor="#000000"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Skill"
-                    android:textColor="@color/headings"
-                    android:textSize="13dp"
-                    android:background="#D5E5F3"/>
-                <TextView
-                    android:id="@+id/tv_skill"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="post"
-                    android:textSize="18dp"
-                    android:textColor="#000000"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Github"
-                    android:textColor="@color/headings"
-                    android:textSize="13dp"
-                    android:background="#D5E5F3"/>
-                <TextView
-                    android:id="@+id/tv_github"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Github"
-                    android:textSize="18dp"
-                    android:textColor="#000000" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="gitlab"
-                    android:textColor="@color/headings"
-                    android:textSize="13dp"
-                    android:background="#D5E5F3"/>
-                <TextView
-                    android:id="@+id/tv_gitlab"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="gitlab"
-                    android:textSize="18dp"
-                    android:textColor="#000000"
-                    android:layout_marginBottom="20dp" />
-
-                <Button
-                    android:id="@+id/btn_portofolio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button"
-                    android:text="Portofolio"
-                    android:layout_marginBottom="20dp" />
-
-                <Button
-                    android:id="@+id/btn_experience"
-                    android:background="@drawable/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Experience"
-                    android:layout_marginBottom="20dp" />
-
-                <Button
-                    android:id="@+id/btn_hiring"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Hiring"
-                    android:background="@drawable/button"
-                    android:layout_marginBottom="50dp" />
-
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
     </LinearLayout>
 
 </layout>

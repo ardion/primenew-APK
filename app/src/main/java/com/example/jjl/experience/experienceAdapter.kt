@@ -20,8 +20,15 @@ class experienceAdabter() : RecyclerView.Adapter<experienceAdabter.experienceHol
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):experienceHolder {
-        return experienceHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_experience, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): experienceHolder {
+        return experienceHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_experience,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int = items.size
@@ -36,7 +43,7 @@ class experienceAdabter() : RecyclerView.Adapter<experienceAdabter.experienceHol
         holder.binding.tvDate.text = item.date
     }
 
-    class experienceHolder( val binding: ItemExperienceBinding) : RecyclerView.ViewHolder(binding.root)
-
+    class experienceHolder(val binding: ItemExperienceBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 }

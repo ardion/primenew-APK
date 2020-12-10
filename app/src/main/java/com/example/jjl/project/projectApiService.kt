@@ -8,7 +8,7 @@ interface projectapiservice {
     @GET("project/{id}")
     suspend fun getAllProject(
         @Path("id") id: String
-    ) : projectresponse
+    ): projectresponse
 
 
     @Multipart
@@ -19,6 +19,4 @@ interface projectapiservice {
         @Part("description_project") description_project: RequestBody,
         @Part image: MultipartBody.Part
     ): ProjectAddResponse
-
-
 }
