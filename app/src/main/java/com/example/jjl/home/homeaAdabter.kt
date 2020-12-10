@@ -33,8 +33,6 @@ class homeaAdabter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: homeHolder, position: Int) {
-
-
         val item = items[position]
         Picasso.get().load("http://35.172.182.122:8080/uploads/" + item.image)
             .into(holder.binding.image)

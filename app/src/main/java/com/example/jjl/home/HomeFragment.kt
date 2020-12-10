@@ -40,9 +40,7 @@ class HomeFragment : Fragment() {
 
     lateinit var binding: FragmenHomeBinding
     lateinit var sharedPref: PreferenceHelper
-
     private lateinit var coroutineScope: CoroutineScope
-
     companion object {
         const val ID_WORKER = "anjay"
     }
@@ -60,7 +58,6 @@ class HomeFragment : Fragment() {
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             private var searchFor = ""
-
             override fun afterTextChanged(s: Editable?) = Unit
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -88,11 +85,8 @@ class HomeFragment : Fragment() {
 
 
     private fun useCoroutineToCallAPI(search:String) {
-        val service =
-            context?.let { ApiClient.getApiClient(it)?.create(homeapiservice::class.java) }
-
+        val service = context?.let { ApiClient.getApiClient(it)?.create(homeapiservice::class.java) }
         val coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-
         coroutineScope.launch {
 
             binding.progressBar.visibility = View.VISIBLE
